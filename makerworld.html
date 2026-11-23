@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print from MakerWorld | LayerLab Print Farm, Richmond Melbourne</title>
+<meta name="description" content="Choose any 3D model on MakerWorld and LayerLab prints it for you on Bambu Lab printers in Richmond, Melbourne. Paste the link, pick a colour and get a quote within 24 hours.">
+<link rel="icon" type="image/svg+xml" href="assets/layerlab-icon.svg">
+<link rel="icon" type="image/png" href="assets/layerlab-icon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#0f9d58; --accent-dark:#0b7a44; --accent-soft:#e7f6ee;
+    --ink:#111418; --muted:#5d6670; --line:#e6e8eb; --card:#f6f7f8; --bg:#fff;
+    --radius:20px; --shadow:0 10px 30px rgba(17,20,24,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  a{color:inherit}
+  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+  section{padding:80px 0;scroll-margin-top:60px}
+  .alt{background:var(--card)}
+
+  /* Nav */
+  .nav{position:sticky;top:14px;z-index:50;margin-top:14px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:10px 12px 10px 22px;box-shadow:var(--shadow)}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-.02em}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center}
+  .logo span b{color:var(--accent)}
+  .links{display:flex;gap:26px;list-style:none}
+  .links a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted)}
+  .links a:hover,.links a.active{color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:12px 24px;font:600 .95rem Inter,sans-serif;text-decoration:none;cursor:pointer;transition:.2s;white-space:nowrap}
+  .btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.small{padding:8px 16px;font-size:.85rem}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;cursor:pointer;font-size:1.2rem}
+
+  .tag{display:inline-block;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 16px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .head{text-align:center;max-width:700px;margin:0 auto 44px}
+  .head h2,.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.12;letter-spacing:-.03em;margin:18px 0 14px;font-weight:700}
+  .head h2 em,.hero h1 em{font-style:normal;color:var(--accent)}
+  .head p{color:var(--muted)}
+
+  /* Hero */
+  .hero{padding:72px 0 56px;text-align:center}
+  .hero p.lead{color:var(--muted);font-size:1.1rem;max-width:640px;margin:0 auto}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .step{position:relative}
+  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--accent-soft);color:var(--accent-dark);font-weight:800;font-size:1.1rem;margin-bottom:16px}
+  .step h3{font-size:1.1rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.95rem}
+
+  /* Picks */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+  .chip-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;font:500 .9rem Inter,sans-serif;cursor:pointer}
+  .chip-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pick{display:flex;flex-direction:column;gap:8px;transition:.2s}
+  .pick:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .pick .cat{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-dark)}
+  .pick h3{font-size:1.05rem;line-height:1.35}
+  .pick p{color:var(--muted);font-size:.9rem;flex:1}
+  .pick .meta{font-size:.8rem;color:var(--muted)}
+  .lic{display:inline-block;background:var(--accent-soft);color:var(--accent-dark);border-radius:6px;padding:1px 8px;font-weight:600;font-size:.75rem;margin-left:4px}
+  .pick .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .more{text-align:center;margin-top:28px}
+
+  /* Licence note */
+  .note{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:#fff8e6;border:1px solid #f3dfae;border-radius:var(--radius);padding:24px;margin-top:36px}
+  .note .ico{width:40px;height:40px;border-radius:12px;background:#f9e7b8;display:grid;place-items:center;font-weight:800;color:#8a5a00}
+  .note h3{font-size:1.05rem;margin-bottom:6px}
+  .note p,.note li{font-size:.92rem;color:#5b4a22}
+  .note ul{margin:8px 0 0 18px}
+
+  /* Order form */
+  .order{display:grid;grid-template-columns:1.1fr .9fr;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+  .order form{padding:40px}
+  .order h3{font-size:1.5rem;margin-bottom:6px}
+  .order .sub{color:var(--muted);margin-bottom:22px}
+  label{display:block;font-size:.88rem;font-weight:500;margin-bottom:6px}
+  input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;font-size:.93rem;background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .field{margin-bottom:14px}
+  .hint{font-size:.8rem;color:var(--muted);margin-top:5px}
+  .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.88rem;color:var(--muted)}
+  .check input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--accent)}
+  .msg{display:none;padding:14px;border-radius:12px;margin-top:14px;font-weight:500;background:#fdecea;color:#a52714}
+  .side{background:linear-gradient(150deg,#0b3d2a,#0f9d58);color:#fff;padding:40px;display:flex;flex-direction:column;gap:22px}
+  .side h3{font-size:1.4rem;line-height:1.3}
+  .side ul{list-style:none;display:grid;gap:14px}
+  .side li{display:flex;gap:12px}
+  .side li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:.8rem}
+  .side .box{background:rgba(255,255,255,.1);border-radius:16px;padding:18px;font-size:.92rem}
+  .side .box a{color:#fff;font-weight:600}
+
+  /* Footer */
+  footer{background:var(--ink);color:#c8cdd2;padding:56px 0 28px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+  footer h4{color:#fff;margin-bottom:14px;font-size:1rem}
+  footer ul{list-style:none;display:grid;gap:8px;font-size:.92rem}
+  footer a{text-decoration:none}
+  footer a:hover{color:#fff}
+  footer .logo{color:#fff;margin-bottom:14px}
+  .copy{border-top:1px solid #2c333a;margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
+
+  @media (max-width:960px){
+    .order{grid-template-columns:1fr}
+    .picks,.steps{grid-template-columns:1fr 1fr}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    .links{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px;box-shadow:var(--shadow)}
+    .links.open{display:flex}
+    .links a{display:block;padding:12px 14px}
+    .menu-btn{display:block}
+    .nav .btn{padding:10px 16px}
+  }
+  @media (max-width:560px){
+    section{padding:60px 0}
+    .picks,.steps,.foot,.row{grid-template-columns:1fr}
+    .order form,.side{padding:26px}
+    .note{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav wrap">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M4 18h16M6 14h12M8 10h8M10 6h4"/></svg></span>
+      <span>Layer<b>Lab</b></span>
+    </a>
+    <ul class="links" id="links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="makerworld.html" class="active">MakerWorld</a></li>
+      <li><a href="index.html#materials">Materials</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a href="#order" class="btn">Order a Print</a>
+      <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">Print from MakerWorld</span>
+    <h1>Pick any design. <em>We print it for you.</em></h1>
+    <p class="lead">No 3D printer? No problem. Browse thousands of free models on MakerWorld, send us the link, and we'll print it in your choice of material and colour at our Richmond print farm.</p>
+    <div class="hero-ctas">
+      <a href="https://makerworld.com/en/3d-models" target="_blank" rel="noopener" class="btn">Browse MakerWorld ↗</a>
+      <a href="#order" class="btn ghost">I already have a link</a>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="alt" id="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">How It Works</span>
+      <h2>Three steps to <em>your print</em></h2>
+    </div>
+    <div class="steps">
+      <div class="card step">
+        <h3>Find a model</h3>
+        <p>Search <a href="https://makerworld.com/en/3d-models" target="_blank" rel="noopener">MakerWorld</a> for anything: organisers, gifts, bike parts, décor, toys. Or start with our picks below.</p>
+      </div>
+      <div class="card step">
+        <h3>Copy the link</h3>
+        <p>Open the model's page and copy the web address from your browser. It looks like <strong>makerworld.com/en/models/…</strong></p>
+      </div>
+      <div class="card step">
+        <h3>Send it to us</h3>
+        <p>Paste the link in the form below, choose material, colour and quantity. We check the file and reply with a price within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our picks -->
+<section id="picks">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Our Picks</span>
+      <h2>Popular designs <em>ready to order</em></h2>
+      <p>Hand-picked models we know print well. All of these have licences that allow us to print and sell them.</p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="chip-btn on" data-cat="all">All</button>
+      <button class="chip-btn" data-cat="Running">Running</button>
+      <button class="chip-btn" data-cat="Climbing">Climbing</button>
+      <button class="chip-btn" data-cat="Cycling">Cycling</button>
+      <button class="chip-btn" data-cat="Home & Business">Home &amp; Business</button>
+    </div>
+    <div class="picks" id="pick-grid"></div>
+    <div class="more"><a href="https://makerworld.com/en/3d-models" target="_blank" rel="noopener" class="btn ghost">See more on MakerWorld ↗</a></div>
+
+    <div class="note">
+      <div class="ico">!</div>
+      <div>
+        <h3>Which models can we print?</h3>
+        <p>Every MakerWorld model has a licence, shown on its page. We can print and sell:</p>
+        <ul>
+          <li>Models licensed <strong>CC0, CC BY, CC BY-SA or CC BY-ND</strong> (most of our picks above)</li>
+          <li>Models you designed yourself, or have a commercial licence for</li>
+        </ul>
+        <p style="margin-top:8px">Many models use MakerWorld's <strong>Standard Digital File License</strong> (personal use only). Send the link anyway: we'll check it and, if we can't print it, suggest a similar design we can.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order form -->
+<section id="order" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Order a Print</span>
+      <h2>Send us your <em>MakerWorld link</em></h2>
+      <p>Free file check and quote within 24 hours. No payment until you approve the price.</p>
+    </div>
+    <div class="order">
+      <form id="mw-form" method="POST">
+        <input type="hidden" name="_subject" value="New MakerWorld print order from the website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" id="mw-next">
+        <input type="hidden" name="order_type" value="Print from MakerWorld">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <h3>Print from MakerWorld</h3>
+        <p class="sub">One model per request. Send another request for more models.</p>
+
+        <div class="field">
+          <label for="mw-link">MakerWorld model link *</label>
+          <input id="mw-link" name="makerworld_link" type="url" required placeholder="https://makerworld.com/en/models/…">
+          <p class="hint">Copy it from the address bar on the model's page.</p>
+        </div>
+        <div class="field">
+          <label for="mw-version">Which version or print profile? (optional)</label>
+          <input id="mw-version" name="version" placeholder="e.g. 'Large size', 'No AMS', 'Plate 2 only'">
+        </div>
+        <div class="row">
+          <div><label for="mw-mat">Material</label>
+            <select id="mw-mat" name="material">
+              <option>Not sure, please recommend</option><option>PLA</option><option>PETG</option><option>ABS / ASA</option><option>TPU (flexible)</option><option>PA-CF / PETG-CF</option>
+            </select></div>
+          <div><label for="mw-colour">Colour(s)</label><input id="mw-colour" name="colour" placeholder="e.g. Matte black, or 'as pictured'"></div>
+        </div>
+        <div class="row">
+          <div><label for="mw-qty">Quantity</label><input id="mw-qty" name="quantity" type="number" min="1" value="1"></div>
+          <div><label for="mw-delivery">Delivery</label>
+            <select id="mw-delivery" name="delivery"><option>Pick up in Richmond</option><option>Post (Australia Post)</option></select></div>
+        </div>
+        <div class="row">
+          <div><label for="mw-name">Name *</label><input id="mw-name" name="name" required placeholder="Your name"></div>
+          <div><label for="mw-email">Email *</label><input id="mw-email" name="email" type="email" required placeholder="you@example.com"></div>
+        </div>
+        <div class="field"><label for="mw-phone">Phone (optional)</label><input id="mw-phone" name="phone" type="tel" placeholder="Phone number"></div>
+        <div class="field"><label for="mw-notes">Anything else?</label><textarea id="mw-notes" name="notes" rows="3" placeholder="Size changes, deadline, name to add, etc."></textarea></div>
+        <div class="field">
+          <label class="check"><input type="checkbox" name="licence_ok" value="Customer confirms" required> I understand LayerLab will check the model's licence and may suggest a similar design if it can't be printed for sale.</label>
+        </div>
+        <button class="btn" type="submit" id="mw-btn">Send Order Request</button>
+        <div class="msg" id="mw-msg"></div>
+      </form>
+      <div class="side">
+        <h3>Why print with LayerLab?</h3>
+        <ul>
+          <li>Printed on Bambu Lab printers with multi-colour AMS.</li>
+          <li>We check every file and fix print issues before we start.</li>
+          <li>Pick up in Richmond or get it posted anywhere in Australia.</li>
+          <li>Bulk orders welcome. Ask about discounts for 20+ prints.</li>
+        </ul>
+        <div class="box">Have your own design instead (STL, 3MF, STEP)? Use our <a href="index.html#quote">custom quote form</a> to upload the file directly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="index.html" class="logo"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M4 18h16M6 14h12M8 10h8M10 6h4"/></svg></span><span>Layer<b style="color:var(--accent)">Lab</b></span></a>
+        <p style="font-size:.92rem">A 3D printing farm making prototypes, parts and products on Bambu Lab printers.</p>
+        <p style="font-size:.92rem;margin-top:10px">40 Victoria St, Richmond VIC 3121</p>
+      </div>
+      <div><h4>Order</h4><ul><li><a href="#order">Print from MakerWorld</a></li><li><a href="index.html#quote">Custom quote</a></li><li><a href="index.html#materials">Materials &amp; pricing</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="index.html#fleet">Our Farm</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> LayerLab Print Farm. All rights reserved.</span><span>MakerWorld and Bambu Lab are trademarks of their respective owners. LayerLab is not affiliated with MakerWorld.</span></div>
+  </div>
+</footer>
+
+<script>
+  /* ===== Curated MakerWorld picks (licences checked Nov 2026) ===== */
+  const PICKS = [
+    ['Running', 'Medal Holder', 'Classic wall medal hanger. Add a name plate to personalise.', 'donnkey', 'CC0', 'https://makerworld.com/en/models/454689-medal-holder'],
+    ['Running', 'Hexagon "Honeycomb" Race Medal Display', 'Modular hex tiles. Add more as your medal collection grows.', 'aphlux0', 'CC BY', 'https://makerworld.com/en/models/251751-hexagon-honeycomb-race-medal-display'],
+    ['Running', 'Customizable Medal with Loop', 'Custom medals for clubs, schools and fun runs.', 'Th3D.br', 'CC BY', 'https://makerworld.com/en/models/3114746-customizable-medal-base-model-with-loop'],
+    ['Running', 'Marathon Bib Clip', 'No more safety pins through your running shirt.', 'Lons', 'CC0', 'https://makerworld.com/en/models/740313-marathon-bib-number-clip-run-button'],
+    ['Running', 'Shoelace Clips (locked)', 'Keep laces tied on long runs.', 'TravockMD', 'CC BY-SA', 'https://makerworld.com/en/models/463752-shoelace-clips-locked'],
+    ['Climbing', 'Climbing Gear Rack / Organizer', 'Wall rack for quickdraws, slings and rope. Made to your size.', 'Rauks', 'CC BY', 'https://makerworld.com/en/models/2772619-climbing-gear-rack-organizer-parametric'],
+    ['Climbing', 'Climbing Keychain', 'A climbing-hold keychain for your gym bag.', 'Rauks', 'CC BY', 'https://makerworld.com/en/models/3334456-climbing-keychain'],
+    ['Climbing', 'Climbing Hold Pins & Earrings', 'Tiny climbing holds as pins and stud earrings.', 'Rauks', 'CC BY', 'https://makerworld.com/en/models/3214503-climbing-hold-pins-stud-earrings'],
+    ['Climbing', 'Chalk Brush Clip', 'Clips your brush to any chalk bag.', 'user_441322998', 'CC0', 'https://makerworld.com/en/models/2962560-chalk-brush-clip-universal-chalk-bag-brush-holder'],
+    ['Cycling', 'Hidden Tracker Holder (Bottle Mount)', 'Hides a tracker tag under your bottle cage.', 'm1chale', 'CC BY', 'https://makerworld.com/en/models/510662-apple-airtag-holder-for-bike-bottle-mount'],
+    ['Cycling', 'Out-Front Mount with Underslung Light', 'Bike computer mount with a light underneath.', 'TheAllegededEngineer', 'CC BY-SA', 'https://makerworld.com/en/models/778184-wahoo-mount-with-underslung-light-attachment'],
+    ['Cycling', 'Bike Phone Holder V2', 'Secure handlebar phone mount for commuting.', 'Dice', 'CC BY-SA', 'https://makerworld.com/en/models/1284609-v2-bike-phone-holder-mount'],
+    ['Cycling', 'Bike Helmet Wall Hook', 'Tidy helmet storage by the door.', 'ImmortalJack', 'CC BY-SA', 'https://makerworld.com/en/models/1072167-bike-helmet-wall-hook'],
+    ['Cycling', 'Bike Tyre Lever', 'Tyre levers for your saddle bag.', 'yopups', 'CC0', 'https://makerworld.com/en/models/1552108-bike-tire-lever-removal-tool'],
+    ['Home & Business', 'Wi-Fi QR Code Sign', 'Your Wi-Fi QR code on a stylish sign. Great for cafés and Airbnbs.', 'az', 'CC BY-SA', 'https://makerworld.com/en/models/575126-not-exactly-a-wifi-qr-code'],
+    ['Home & Business', 'Sign / Tablet / Book Display Stand', 'Display stand for signs, menus, books or tablets.', 'OtakuMx', 'CC BY-SA', 'https://makerworld.com/en/models/550731-book-sign-tablet-display-stand-25mm-multi-size'],
+    ['Home & Business', 'Sleek Business Card Holder', 'Minimal card holder for desks and counters.', 'flummer', 'CC BY-SA', 'https://makerworld.com/en/models/700572-sleek-business-and-credit-card-holder'],
+    ['Home & Business', 'Flexi Rex Keychain', 'Wiggly dinosaur keychain. A favourite with kids.', 'LukesWorkshopBuilds', 'CC BY-SA', 'https://makerworld.com/en/models/2326479-flexi-rex-keychain'],
+  ];
+
+  const grid = document.getElementById('pick-grid');
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  grid.innerHTML = PICKS.map(([cat, title, desc, by, lic, url]) => `
+    <div class="card pick" data-cat="${esc(cat)}">
+      <span class="cat">${esc(cat)}</span>
+      <h3>${esc(title)}</h3>
+      <p>${esc(desc)}</p>
+      <span class="meta">Design by ${esc(by)} on MakerWorld <span class="lic">${esc(lic)}</span></span>
+      <div class="actions">
+        <button class="btn small" type="button" data-order="${esc(url)}">Order this</button>
+        <a class="btn ghost small" href="${esc(url)}" target="_blank" rel="noopener">View model ↗</a>
+      </div>
+    </div>`).join('');
+
+  // Category filter
+  document.getElementById('filters').addEventListener('click', e => {
+    const b = e.target.closest('.chip-btn'); if (!b) return;
+    document.querySelectorAll('.chip-btn').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.pick').forEach(p => p.style.display = (b.dataset.cat === 'all' || p.dataset.cat === b.dataset.cat) ? '' : 'none');
+  });
+
+  // "Order this" fills the link into the form
+  const linkInput = document.getElementById('mw-link');
+  grid.addEventListener('click', e => {
+    const b = e.target.closest('[data-order]'); if (!b) return;
+    linkInput.value = b.dataset.order;
+    document.getElementById('order').scrollIntoView({behavior: 'smooth'});
+    setTimeout(() => document.getElementById('mw-mat').focus({preventScroll: true}), 600);
+  });
+  // Also accept ?model=<link> in the page address
+  const pre = new URLSearchParams(location.search).get('model');
+  if (pre) linkInput.value = pre;
+
+  /* ===== Form sending (FormSubmit, same as the home page) ===== */
+  const FORM_EMAIL = 'emansedoc@gmail.com';   // replace with your FormSubmit code once you have it
+  const form = document.getElementById('mw-form'), msg = document.getElementById('mw-msg'), btn = document.getElementById('mw-btn');
+  function isMakerWorld(u) {
+    try { const h = new URL(u).hostname; return h === 'makerworld.com' || h.endsWith('.makerworld.com'); } catch { return false; }
+  }
+  form.addEventListener('submit', e => {
+    msg.style.display = 'none';
+    if (!isMakerWorld(linkInput.value.trim())) {
+      e.preventDefault();
+      msg.textContent = 'Please paste a link from makerworld.com (e.g. https://makerworld.com/en/models/…). For your own files, use the custom quote form.';
+      msg.style.display = 'block'; linkInput.focus(); return;
+    }
+    if (!FORM_EMAIL) { e.preventDefault(); msg.textContent = 'The order form is not connected yet.'; msg.style.display = 'block'; return; }
+    form.action = 'https://formsubmit.co/' + encodeURIComponent(FORM_EMAIL);
+    document.getElementById('mw-next').value = new URL('thanks.html', location.href).href;
+    btn.disabled = true; btn.textContent = 'Sending…';
+  });
+  window.addEventListener('pageshow', () => { btn.disabled = false; btn.textContent = 'Send Order Request'; });
+
+  document.querySelectorAll('#links a').forEach(a => a.addEventListener('click', () => document.getElementById('links').classList.remove('open')));
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
