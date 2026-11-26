@@ -109,6 +109,26 @@
   .card h3{font-size:1.15rem;margin-bottom:8px}
   .card p{color:var(--muted);font-size:.95rem}
 
+  /* ===== Christmas shop ===== */
+  .shop{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .product{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .product img{width:100%;aspect-ratio:1;object-fit:cover;background:#e8eef3}
+  .product .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .product h3{font-size:1.05rem}
+  .product p{color:var(--muted);font-size:.88rem}
+  .product .spec{font-size:.8rem;color:var(--muted)}
+  .product .buy{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+  .product .buy strong{font-size:1.4rem;letter-spacing:-.02em}
+  .product .btn{padding:9px 18px;font-size:.88rem}
+  .badge{display:inline-block;background:#fdecea;color:#a52714;border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:600;width:max-content}
+  .deals{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+  .deal{display:flex;justify-content:space-between;align-items:center;gap:18px;background:var(--accent-soft);border:1px solid #cfe9da;border-radius:var(--radius);padding:24px 26px}
+  .deal h3{font-size:1.25rem;margin:10px 0 4px}
+  .deal p{color:var(--muted);font-size:.9rem}
+  .deal .tag{background:#fff}
+  .shop-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:24px}
+
   /* ===== Fleet ===== */
   .fleet{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
   .fleet .card{text-align:center}
@@ -138,7 +158,7 @@
 
   /* ===== Quote (form + image split card) ===== */
   .quote{display:grid;grid-template-columns:1fr 1fr;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
-  .quote form{padding:40px}
+  .quote form{padding:40px;scroll-margin-top:100px}
   .quote h3{font-size:1.5rem;margin-bottom:6px}
   .quote .sub{color:var(--muted);margin-bottom:24px}
   .drop{border:2px dashed #cfd4d9;border-radius:14px;padding:22px;text-align:center;color:var(--muted);font-size:.9rem;cursor:pointer;background:#fff}
@@ -185,11 +205,12 @@
   /* ===== Responsive ===== */
   @media (max-width:960px){
     .hero-grid,.two,.quote{grid-template-columns:1fr}
-    .grid3,.contact{grid-template-columns:1fr 1fr}
+    .grid3,.contact,.shop{grid-template-columns:1fr 1fr}
+    .deals{grid-template-columns:1fr}
     .fleet{grid-template-columns:1fr 1fr}
     .foot{grid-template-columns:1fr 1fr}
   }
-  @media (max-width:760px){
+  @media (max-width:900px){
     .links{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px;box-shadow:var(--shadow)}
     .links.open{display:flex}
     .links a{display:block;padding:12px 14px}
@@ -198,7 +219,8 @@
   }
   @media (max-width:560px){
     section{padding:64px 0}
-    .grid3,.contact,.fleet,.foot,.row{grid-template-columns:1fr}
+    .grid3,.contact,.fleet,.foot,.row,.shop,.deals{grid-template-columns:1fr}
+    .deal{flex-direction:column;align-items:flex-start}
     .quote form,.quote-art{padding:26px}
   }
 </style>
@@ -214,6 +236,7 @@
     </a>
     <ul class="links" id="links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#mafia-cats">Mafia Cats</a></li>
       <li><a href="makerworld.html">MakerWorld</a></li>
       <li><a href="#materials">Materials</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -300,6 +323,90 @@
   </div>
 </section>
 
+<!-- ============ MAFIA CAT CHRISTMAS COLLECTION ============ -->
+<section id="mafia-cats">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">The Mafia Cat Collection</span>
+      <h2>Meet the family, <em>Christmas edition</em></h2>
+      <p>Six cool cats in shades and Christmas costumes. Our own LayerLab designs, printed in multi-colour PLA. Clip one on a bag or keys, or collect the whole family.</p>
+    </div>
+    <div class="shop">
+      <div class="product">
+        <img src="assets/mafia-cat/santa.jpg" alt="3D printed keychain of a white cat in a red Santa suit and hat wearing round black sunglasses" loading="lazy">
+        <div class="body">
+          <span class="badge">The boss</span>
+          <h3>Don Claus</h3>
+          <p>White cat in a red Santa suit and hat, black shades and a gold belt buckle.</p>
+          <span class="spec">Approx. 47 × 32 mm · 4 colours</span>
+          <div class="buy"><strong>$14</strong><a href="#quote-form" class="btn" data-product="Don Claus Mafia Cat ($14)">Order</a></div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="assets/mafia-cat/midnight.jpg" alt="3D printed keychain of a black cat in a red Santa suit and hat wearing round gold sunglasses" loading="lazy">
+        <div class="body">
+          <span class="badge">Night shift</span>
+          <h3>Midnight Don</h3>
+          <p>Black cat in a red Santa suit, with gold shades to match the buckle.</p>
+          <span class="spec">Approx. 47 × 32 mm · 4 colours</span>
+          <div class="buy"><strong>$14</strong><a href="#quote-form" class="btn" data-product="Midnight Don Mafia Cat ($14)">Order</a></div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="assets/mafia-cat/elf.jpg" alt="3D printed keychain of a ginger cat in a green elf suit and pointed elf hat with a gold bell, wearing round black sunglasses" loading="lazy">
+        <div class="body">
+          <span class="badge">The muscle</span>
+          <h3>Elf Enforcer</h3>
+          <p>Ginger cat in a green elf suit, a pointed hat with a gold bell and red trim.</p>
+          <span class="spec">Approx. 47 × 34 mm · 5 colours</span>
+          <div class="buy"><strong>$14</strong><a href="#quote-form" class="btn" data-product="Elf Enforcer Mafia Cat ($14)">Order</a></div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="assets/mafia-cat/reindeer.jpg" alt="3D printed keychain of a white cat in a brown reindeer onesie with a hood, antlers, fawn spots, a red nose and round black sunglasses" loading="lazy">
+        <div class="body">
+          <span class="badge">The getaway driver</span>
+          <h3>Rudy Red Nose</h3>
+          <p>White cat in a hooded reindeer onesie with antlers, fawn spots and a shiny red nose.</p>
+          <span class="spec">Approx. 48 × 32 mm · 5 colours</span>
+          <div class="buy"><strong>$14</strong><a href="#quote-form" class="btn" data-product="Rudy Red Nose Mafia Cat ($14)">Order</a></div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="assets/mafia-cat/tree.jpg" alt="3D printed keychain of a white cat in a green Christmas tree costume with baubles and a gold star hat, wearing round black sunglasses" loading="lazy">
+        <div class="body">
+          <span class="badge">The lookout</span>
+          <h3>Tony Tannenbaum</h3>
+          <p>White cat in a Christmas tree suit with red and gold baubles and a gold star on top.</p>
+          <span class="spec">Approx. 47 × 33 mm · 5 colours</span>
+          <div class="buy"><strong>$14</strong><a href="#quote-form" class="btn" data-product="Tony Tannenbaum Mafia Cat ($14)">Order</a></div>
+        </div>
+      </div>
+      <div class="product">
+        <img src="assets/mafia-cat/present.jpg" alt="3D printed keychain of a white cat in a red present costume with a gold ribbon, gold bow and white polka dots, wearing round black sunglasses" loading="lazy">
+        <div class="body">
+          <span class="badge">Special delivery</span>
+          <h3>The Package</h3>
+          <p>White cat wrapped as a red present, with a gold ribbon, a big gold bow and polka dots.</p>
+          <span class="spec">Approx. 47 × 27 mm · 4 colours</span>
+          <div class="buy"><strong>$14</strong><a href="#quote-form" class="btn" data-product="The Package Mafia Cat ($14)">Order</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="deals">
+      <div class="deal">
+        <div><span class="tag">Stocking filler</span><h3>Any 2 cats for $26</h3><p>Pick any two from the family. Great for a Kris Kringle or a pair of friends.</p></div>
+        <a href="#quote-form" class="btn" data-product="Any 2 Mafia Cats ($26)">Order 2</a>
+      </div>
+      <div class="deal">
+        <div><span class="tag">Collector set</span><h3>The whole family: all 6 for $72</h3><p>Collect every cat in the Christmas family. Save $12.</p></div>
+        <a href="#quote-form" class="btn" data-product="The whole family, all 6 Mafia Cats ($72)">Order all 6</a>
+      </div>
+    </div>
+    <p class="shop-note">Prices are per keychain unless shown as a bundle. Order by 15 December for delivery before Christmas. Pick up in Richmond or we post it to you.</p>
+  </div>
+</section>
+
 <!-- ============ FLEET ============ -->
 <section id="fleet">
   <div class="wrap">
@@ -376,6 +483,20 @@
         <h3>Get Free Quote</h3>
         <p class="sub">STL, 3MF, STEP and OBJ files accepted.</p>
         <a href="makerworld.html" class="mw-banner"><strong>No file?</strong> Pick a design on MakerWorld and we'll print it →</a>
+        <div class="field"><label for="q-product">What would you like?</label>
+          <select id="q-product" name="product">
+            <option>Custom print (my own file)</option>
+            <option>Don Claus Mafia Cat ($14)</option>
+            <option>Midnight Don Mafia Cat ($14)</option>
+            <option>Elf Enforcer Mafia Cat ($14)</option>
+            <option>Rudy Red Nose Mafia Cat ($14)</option>
+            <option>Tony Tannenbaum Mafia Cat ($14)</option>
+            <option>The Package Mafia Cat ($14)</option>
+            <option>Any 2 Mafia Cats ($26)</option>
+            <option>The whole family, all 6 Mafia Cats ($72)</option>
+          </select></div>
+        <div class="field" id="pick-field" hidden><label for="q-pick">Which two cats?</label>
+          <input id="q-pick" name="cats_chosen" placeholder="e.g. Don Claus and The Package"></div>
         <div class="row">
           <div><label for="q-name">Name</label><input id="q-name" name="name" required placeholder="Your name"></div>
           <div><label for="q-phone">Phone number</label><input id="q-phone" name="phone" type="tel" placeholder="Phone number"></div>
@@ -535,6 +656,22 @@
   });
   // Re-enable the button if the visitor comes back with the browser's Back button
   window.addEventListener('pageshow', () => { $('q-btn').disabled = false; $('q-btn').textContent = 'Send Request'; });
+
+  // "Order" buttons on the Mafia Cat collection pick that product in the quote form
+  document.querySelectorAll('[data-product]').forEach(b => b.addEventListener('click', () => {
+    $('q-product').value = b.dataset.product;
+    $('q-mat').value = 'PLA';
+    $('q-qty').value = 1;
+    updatePick();
+  }));
+  // Ask which cats they want when they order "Any 2"
+  function updatePick(){
+    const two = /Any 2/.test($('q-product').value);
+    $('pick-field').hidden = !two;
+    $('q-pick').required = two;
+  }
+  $('q-product').addEventListener('change', updatePick);
+  updatePick();
 
   // Close mobile menu on link click
   document.querySelectorAll('#links a').forEach(a => a.addEventListener('click', () => $('links').classList.remove('open')));
